@@ -8,10 +8,11 @@ function App() {
   const [home, setHome] = useState(true);
   const [participantes, setParticipantes] = useState([]);
   const [escolhidos, setEscolhidos] = useState([]);
-  const [filtrados, setFiltrados] = useState([]);
 
   useEffect(() => {
-    fetch(`https://hp-api.herokuapp.com/api/characters/students`)
+    fetch(`https://hp-api.herokuapp.com/api/charactent 1B
+Sprint 2A
+ Sprrs/students`)
       .then((response) => response.json())
       .then((response) =>
         setParticipantes(response.filter((e) => e.image !== ""))
@@ -20,12 +21,16 @@ function App() {
   }, []);
 
   function randomizar() {
-    let players = participantes
-    const p1 = participantes[Math.floor(Math.random() * (11 - 0 + 1) + 0)];
-    const p2 = participantes[Math.floor(Math.random() * (11 - 0 + 1) + 0)];
-    const p3 = participantes[Math.floor(Math.random() * (11 - 0 + 1) + 0)];
-
-    setEscolhidos([...escolhidos, players]);
+    let players = participantes;
+    const p1 = players[Math.floor(Math.random() * (players.length - 1))];
+    players.filter((e) => e.house !== p1.house);
+    players.filter((e) => e.name !== p1.name);
+    const p2 = players[Math.floor(Math.random() * (players.length - 1))];
+    players.filter((e) => e.house !== p2.house);
+    players.filter((e) => e.name !== p2.name);
+    const p3 = players[Math.floor(Math.random() * (players.length - 1))];
+    setEscolhidos([p1, p2, p3]);
+    setHome(false);
   }
 
   return (
