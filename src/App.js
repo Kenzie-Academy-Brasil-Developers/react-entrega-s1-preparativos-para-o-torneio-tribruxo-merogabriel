@@ -3,38 +3,30 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Players from "./components/Players";
 import Home from "./components/Home";
-import Game from "./components/Game";
 
 function App() {
   const [home, setHome] = useState(true);
   const [participantes, setParticipantes] = useState([]);
-  const [player1, setPlayer1] = useState("");
-  const [player2, setPlayer2] = useState("");
-  const [player3, setPlayer3] = useState("");
   const [escolhidos, setEscolhidos] = useState([]);
+  const [filtrados, setFiltrados] = useState([]);
 
   useEffect(() => {
-    fetch(`http://hp-api.herokuapp.com/api/characters`)
+    fetch(`https://hp-api.herokuapp.com/api/characters/students`)
       .then((response) => response.json())
-      .then((response) => setParticipantes(response))
+      .then((response) =>
+        setParticipantes(response.filter((e) => e.image !== ""))
+      )
       .catch((err) => console.log(err));
   }, []);
 
   function randomizar() {
-    setParticipantes(participantes.filter(elm => elm.img !== ""))
-    let ran1 = Math.floor(Math.random() * 25);
-    let ran2 = Math.floor(Math.random() * 25);
-    let ran3 = Math.floor(Math.random() * 25);
+    let players = participantes
+    const p1 = participantes[Math.floor(Math.random() * (11 - 0 + 1) + 0)];
+    const p2 = participantes[Math.floor(Math.random() * (11 - 0 + 1) + 0)];
+    const p3 = participantes[Math.floor(Math.random() * (11 - 0 + 1) + 0)];
 
-    setPlayer1(participantes[ran1]);
-    setPlayer2(participantes[ran2]);
-    setPlayer3(participantes[ran3]);
-    setEscolhidos([player1, player2, player3]);
-    if (home) {
-      setHome(false)
-    }
+    setEscolhidos([...escolhidos, players]);
   }
-
 
   return (
     <div className="App">

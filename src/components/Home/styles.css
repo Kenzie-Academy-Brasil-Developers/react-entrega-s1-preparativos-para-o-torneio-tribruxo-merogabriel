@@ -1,0 +1,27 @@
+.home {
+  width: 97vw;
+  height: 97vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home h1 {
+  font-size: 50px;
+}
+
+.home h2 {
+  margin-top: 40px;
+  font-size: 20px;
+  margin-bottom: 90px;
+}
+
+.home button {
+  padding: 10px;
+  background-color: yellow;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 1.8rem;
+  border-radius: 15px;
+}
