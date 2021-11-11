@@ -10,9 +10,7 @@ function App() {
   const [escolhidos, setEscolhidos] = useState([]);
 
   useEffect(() => {
-    fetch(`https://hp-api.herokuapp.com/api/charactent 1B
-Sprint 2A
- Sprrs/students`)
+    fetch(`http://hp-api.herokuapp.com/api/characters/students`)
       .then((response) => response.json())
       .then((response) =>
         setParticipantes(response.filter((e) => e.image !== ""))
