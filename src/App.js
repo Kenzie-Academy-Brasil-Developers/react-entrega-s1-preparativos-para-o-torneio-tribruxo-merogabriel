@@ -21,11 +21,13 @@ function App() {
   function randomizar() {
     let players = participantes;
     const p1 = players[Math.floor(Math.random() * (players.length - 1))];
-    players.filter((e) => e.house !== p1.house);
-    players.filter((e) => e.name !== p1.name);
+    players = players.filter((e) => e.house !== p1.house);
+    players = players.filter((e) => e.name !== p1.name);
+    console.log("p1", players);
     const p2 = players[Math.floor(Math.random() * (players.length - 1))];
-    players.filter((e) => e.house !== p2.house);
-    players.filter((e) => e.name !== p2.name);
+    players = players.filter((e) => e.house !== p2.house);
+    players = players.filter((e) => e.name !== p2.name);
+    console.log("p2", players);
     const p3 = players[Math.floor(Math.random() * (players.length - 1))];
     setEscolhidos([p1, p2, p3]);
     setHome(false);
